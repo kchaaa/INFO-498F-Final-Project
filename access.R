@@ -6,10 +6,10 @@ library(httr)
 library(httpuv)
 
 # Keys and Tokens to access the data for Yelp.
-consumer_key <- "8y28uWGAv256heh6_HNp0A"
-consumer_secret <- "6lli7z5GyKyy_2JVjKYSo7tTi6w"
-token <- "ZjmpIHp1W8hufMxTO0Jm-XKVfNpWT_td"
-token_secret <- "-zO7B6Q5lFFXf4imnB2LWOasKvQ"
+consumer_key <- "xxxx" # Add your consumer key.
+consumer_secret <- "xxxx" # instAdd your secret consumer key.
+token <- "xxxx" # Add your token
+token_secret <- "xxxx" # Add your secret token.
 
 # Authroization for Yelp.
 myapp <- oauth_app("YELP", key = consumer_key, secret = consumer_secret)
