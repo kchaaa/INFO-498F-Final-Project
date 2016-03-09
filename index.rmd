@@ -1,6 +1,7 @@
 ---
 title: "Flint, MI Water Crisis"
 output: html_document
+runtime: shiny
 ---
 
 
@@ -179,6 +180,4 @@ ward_9 <- data %>%
 ward_9_high <- ward_9 %>% 
   filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
 num_ward_9 <- nrow(ward_9_high)
-
 ```
-
