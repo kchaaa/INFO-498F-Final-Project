@@ -331,9 +331,11 @@ As we can see, we can see the number of
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(shiny)
 library(plotly)
-
+# The names function finds the column names to be used in shiny interactions
 names <- colnames(safe_num[2:4])
+# Indicates the beginning of the shiny architecture
 shinyApp(
+  # Ui Section
   ui = fluidPage(
     titlePanel("Flint Water Contamination"),
     sidebarLayout(
@@ -341,17 +343,21 @@ shinyApp(
         selectInput("choice", label = h3("Test Type"),
                     choices = names, selected = "First_Ward_Num")
       ),
+      # Outputs the bar chart in mainPanel
       mainPanel(
         plotlyOutput("bar")
       )
     )
   ),
-  #--
+  # Server Section
   server = function(input, output) {
+    # Sends plotly graph to ui to be printed
     output$bar <- renderPlotly({
+      # Uses a functioni from plot.r to generate a graph
       stackbar(safe_num, warning_num, above_num, input$choice)
     })
   },
+  # Changes the size of the graph to optimmize its use in the rmd
   options = list(height = 463)
   )
 ```
