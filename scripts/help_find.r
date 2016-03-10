@@ -4,6 +4,7 @@ require(maps)
 require(mapproj)
 require(sp)
 
+# Reads in the dataset.
 filter_data <- read.csv('data/Flint_Water_Filter_Locations.csv')
 
 # Gets the terrain map of Flint, Michigan
