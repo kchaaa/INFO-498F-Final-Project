@@ -282,36 +282,46 @@ num_ward_9 <- nrow(ward_9_high)
 ```
 
 
-# Flint Map
+# Image
+
 
 **What is the Flint Water Crisis?**
+
 The Flint Water Crisis is about how the residents of Flint have been suffering from lead-infected water.
 
 **How Did This Happen?**
+
 In April 2013, the Flint city council voted to join the Karegnondi Water Authority (KWA) that promised that they would get water from Lake Huron. This deal will save the city $19 million over eight years instead of continuing to pay Detroit for water. In response to Flint's decision, Detroit announced that they would stop providing Flint water in April 2014 even though the KWA won't be ready for another 3 years. Despite previous concerns about the conditions of the river, the emergency manager in Flint decided that they should use the Flint River as a backup water source. After using it, residents begin to notice and complain about the poor tasting and smelly water. The city found fecal coliform bacteria and recommended residents boil their water and buy bottled water.
 
 **How Did the Government Respond?**
+
 The government of Michigan and Flint worked to try to fix the water source; however, the state government refused to allow Flint to switch their water supply back to Detroit. Due to the government's effort, the city finally was able to improve the quality fo their water. Their celebration would be short because scientists soon found lead in the water due to old pipes and poor infrastructure. The State government promised to use $1 million to buy water filters for the city of Flint and finally allowed Flint to use Detroit water again. The government recommended they boil water as a way to clean their water, but boiling water results in higher lead concentration because a heavy metal like lead doesn't evaporate like water does. 
 
 **What Are the Effects of Consuming Lead-Infected Water?**
+
 The lead-infected water has serious health effects on the residents of Flint especially the children and pregnant women of Flint. It can affect growth their growth, behaviors, cognition, and hearing. Consuming lead-infected water can impact the residents' heart, kidneys, and nerves. There are medications that would reduce the amount of lead in their blood to reduce the negative effects of lead; however, no medication exist to treat for the adverse health effects. 
 
 **How is the Test Conducted?**
+
 A few months ago, a test was done in Flint. Three tests were conducted using the residents' toilets: 
 1) the first draw, 
 2) 45 seconds after flushing,  
 3) 2 minutes after flushing. 
 
 **What Do the Results of the Tests Mean?**
+
 If the sample is below 5 ppb, the water is fine. 
 If the sample is between 5 ppb and 15 ppb, then the water is relatively safe, but it is on the cusp of the danger. 
 If the sample is above 15 ppb,  then the households are at high risk and the EPA and the government needs to take action because 15 ppb is the allowed EPA level.
 
 **What is ppb?**
+
 Ppb stands for Parts Per Billion. It is the unit used to measure how much lead is in the water.
 
 
 
 # Stacked Bar Chart
+
+# Map
 
 
