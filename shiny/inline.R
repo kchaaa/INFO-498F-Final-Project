@@ -27,4 +27,6 @@ shinyApp(
     output$bar <- renderPlotly({
       stackbar(safe_num, warning_num, above_num, input$choice)
     })
-  })
+  },
+  options = list(height = 463)
+  )
