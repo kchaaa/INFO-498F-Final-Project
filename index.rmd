@@ -48,7 +48,7 @@ max_2_min <- data %>%
 safe_first_draw <- data %>% 
                    filter(First_Draw < 5)
                    safe_first_num <- safe_first_draw %>% 
-                   group_by(Ward) %>% summarise(First_Ward_Num=sum(Ward==Ward))
+                   group_by(Ward) %>% summarise(First_Draw=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 45 seconds after flushing.
 safe_45_sec <- data %>% 
@@ -56,14 +56,14 @@ safe_45_sec <- data %>%
 
 safe_45sec_num <- safe_45_sec %>% 
                   group_by(Ward) %>% 
-                  summarise(Sec_Ward_Num=sum(Ward==Ward))
+                  summarise(Flushing_45_Sec=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 2 minutes after flushing.
 safe_2_min <- data %>% 
               filter(Flushing_2_Min < 5)
               safe_2min_num <- safe_2_min %>% 
               group_by(Ward) %>% 
-              summarise(Min_Ward_Num=sum(Ward==Ward))
+              summarise(Flushing_2_Min=sum(Ward==Ward))
 
 # Combines the households that have high ppb levels for all 3 samples.
 safe_levels <- inner_join(safe_2_min, safe_45_sec, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
@@ -87,7 +87,7 @@ warning_first_draw <- data %>%
 
 warning_first_num <- warning_first_draw %>% 
                      group_by(Ward) %>% 
-                     summarise(First_Ward_Num=sum(Ward==Ward))
+                     summarise(First_Draw=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 45 seconds after flushing.
 warning_45_sec <- data %>% 
@@ -95,7 +95,7 @@ warning_45_sec <- data %>%
 
 warning_45sec_num <- warning_45_sec %>% 
                      group_by(Ward) %>% 
-                     summarise(Sec_Ward_Num=sum(Ward==Ward))
+                     summarise(Flushing_45_Sec=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 2 minutes after flushing.
 warning_2_min <- data %>% 
@@ -103,7 +103,7 @@ warning_2_min <- data %>%
 
 warning_2min_num <- warning_2_min %>% 
                     group_by(Ward) %>% 
-                    summarise(Min_Ward_Num=sum(Ward==Ward))
+                    summarise(Flushing_2_Min=sum(Ward==Ward))
 
 # Combines the households that have high ppb levels for all 3 samples.
 warning_levels <- inner_join(warning_2_min, warning_45_sec, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
@@ -127,7 +127,7 @@ above_epa_first_draw <- data %>%
 
 above_first_num <- above_epa_first_draw %>% 
                    group_by(Ward) %>% 
-                   summarise(First_Ward_Num=sum(Ward==Ward))
+                   summarise(First_Draw=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 45 seconds after flushing.
 above_epa_45_sec <- data %>% 
@@ -135,7 +135,7 @@ above_epa_45_sec <- data %>%
 
 above_45sec_num <- above_epa_45_sec %>% 
                    group_by(Ward) %>% 
-                   summarise(Sec_Ward_Num=sum(Ward==Ward))
+                   summarise(Flushing_45_Sec=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 2 minutes after flushing.
 above_epa_2_min <- data %>% 
@@ -143,7 +143,7 @@ above_epa_2_min <- data %>%
 
 above_2min_num <- above_epa_2_min %>% 
                   group_by(Ward) %>% 
-                  summarise(Min_Ward_Num=sum(Ward==Ward))
+                  summarise(Flushing_2_Min=sum(Ward==Ward))
 
 # Combines the households that have high ppb levels for all 3 samples.
 above_epa <- inner_join(above_epa_2_min, above_epa_45_sec, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)

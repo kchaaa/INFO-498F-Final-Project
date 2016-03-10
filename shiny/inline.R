@@ -14,8 +14,7 @@ shinyApp(
     titlePanel("Flint Water Contamination"),
     sidebarLayout(
       sidebarPanel(
-        "Contamination",
-        selectInput("choice", label = h3("Time"),
+        selectInput("choice", label = h3("Test Type"),
                     choices = names, selected = "First_Ward_Num")
       ),
       mainPanel(
