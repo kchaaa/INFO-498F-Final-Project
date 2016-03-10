@@ -29,15 +29,18 @@ colnames(data)[6] <- 'Flushing_2_Min'
 
 # Obtains the households with the highest level of lead (ppb) from the first sample.
 max_first_draw <- data %>% 
-  filter(max(First_Draw) == First_Draw)
+  filter(max(First_Draw) == First_Draw) %>% 
+  select(Ward, First_Draw)
 
 # Obtains the households with the highest level of lead (ppb) from the sample 45 seconds after flushing.
 max_45_sec <- data %>% 
-  filter(max(Flushing_45_Sec) == Flushing_45_Sec)
+  filter(max(Flushing_45_Sec) == Flushing_45_Sec) %>% 
+  select(Ward, Flushing_45_Sec)
 
 # Obtains the households with the highest level of lead (ppb) from the sample 2 minutes after flushing.
 max_2_min <- data %>% 
-  filter(max(Flushing_2_Min) == Flushing_2_Min)
+  filter(max(Flushing_2_Min) == Flushing_2_Min) %>% 
+  select(Ward, Flushing_2_Min)
 
 #--------------------------------------------------------------#
 # This section checks which households tested above the worrisome level of led (5ppb).
