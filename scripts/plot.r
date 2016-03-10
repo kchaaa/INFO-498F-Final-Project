@@ -16,17 +16,20 @@ stackbar <- plot_ly(
   x = safe_num[,1],
   y = safe_num[,2],
   name = "Safe Level",
-  type = "bar"
+  type = "bar",
+  marker = list(color = toRGB("springgreen4"))
   ) %>% 
  add_trace(
   x = warning_num[,1],
   y = warning_num[,2],
-  name = "Warning Level"
+  name = "Warning Level",
+  marker = list(color = toRGB("darkorange"))
   ) %>% 
   add_trace(
     x = above_num[,1],
     y = above_num[,2],
-    name = "Danger Level"
+    name = "Danger Level",
+    marker = list(color = toRGB("firebrick2"))
   ) %>% 
   layout(
     xaxis = list(title = "Wards"),
