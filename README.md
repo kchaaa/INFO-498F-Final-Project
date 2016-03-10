@@ -3,7 +3,7 @@
 
 ## OBJECTIVES:
 
-#### - [x] Incorporate sufficient background information
+- [x] Incorporate sufficient background information
 
 - [ ] Use of Interactivity
 * Work on an interactive bar/scatter plot
