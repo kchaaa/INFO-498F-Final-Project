@@ -310,9 +310,9 @@ A few months ago, a test was done in Flint. Three tests were conducted using the
 
 **What Do the Results of the Tests Mean?**
 
-If the sample is below 5 ppb, the water is fine. 
-If the sample is between 5 ppb and 15 ppb, then the water is relatively safe, but it is on the cusp of the danger. 
-If the sample is above 15 ppb,  then the households are at high risk and the EPA and the government needs to take action because 15 ppb is the allowed EPA level.
+If the sample is below 5 ppb, the EPA deems this range as acceptable. 
+If the sample is between 5 ppb and 14 ppb, then the water is relatively safe, but it is on the cusp of the danger. 
+If the sample is 15 ppb or above,   a range above the federal action level for lead, but can be treated by filters.
 
 **What is ppb?**
 
