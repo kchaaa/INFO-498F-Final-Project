@@ -19,6 +19,7 @@ source('scripts/plot.r')
 # Reads in the dataset.
 data <- read.csv('data/Flint-Samples-FINAL.csv')
 data <- data[-c(91),]
+
 # Renames 3 of the columns to be more readable
 colnames(data)[4] <- 'First_Draw'
 colnames(data)[5] <- 'Flushing_45_Sec'
@@ -323,7 +324,9 @@ If the sample is 15 ppb or above, a range above the federal action level for lea
 
 Ppb stands for Parts Per Billion. It is the unit used to measure how much lead is in the water.
 
+**What Does This Graph Show?**
 
+As we can see, we can see the number of 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(shiny)
@@ -352,6 +355,13 @@ shinyApp(
   options = list(height = 463)
   )
 ```
+
+**What is a Ward?**
+
+A ward is a district or section of a city. As we can see in the grpahic above, there are a total of 9 wards in Flint, MI. 
+
+**Which Ward is in the Most Danger? Least Danger?**
+ 
 
 # Map
 
