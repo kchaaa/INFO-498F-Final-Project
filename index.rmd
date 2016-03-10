@@ -42,27 +42,33 @@ max_45_sec <- data %>%
 max_2_min <- data %>% 
              filter(max(Flushing_2_Min) == Flushing_2_Min) %>% 
              select(Ward, Flushing_2_Min)
+
 #--------------------------------------------------------------#
 # This section checks which households tested below worrisome level (0-5ppb)
 
-# Obtains the households with ppb levels below the EPA allowed level (5ppb) for the first sample.
+# Obtains the households with ppb levels that are deemed acceptable by the EPA (0-5ppb) for the first sample.
 safe_first_draw <- data %>% 
                    filter(First_Draw < 5)
-                   safe_first_num <- safe_first_draw %>% 
+
+# Counts the number of households that are deemed acceptable by the EPA (0-5ppb) for the first sample.
+safe_first_num <- safe_first_draw %>% 
                    group_by(Ward) %>% summarise(First_Draw=sum(Ward==Ward))
 
-# Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 45 seconds after flushing.
+# Obtains the households with ppb levels that are deemed acceptable by the EPA (0-5ppb) for the sample 45 seconds after flushing.
 safe_45_sec <- data %>% 
                filter(Flushing_45_Sec < 5)
 
+# Counts the number of households that are deemed acceptable by the EPA (0-5ppb) for the sample 45 seconds after flushing.
 safe_45sec_num <- safe_45_sec %>% 
                   group_by(Ward) %>% 
                   summarise(Flushing_45_Sec=sum(Ward==Ward))
 
-# Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 2 minutes after flushing.
+# Obtains the households with ppb levels that are deemed acceptable by the EPA (0-5ppb) for the sample 2 minutes after flushing.
 safe_2_min <- data %>% 
               filter(Flushing_2_Min < 5)
-              safe_2min_num <- safe_2_min %>% 
+
+# Counts the number of households that are deemed acceptable by the EPA (0-5ppb) for the sample 2 minutes after flushing.
+safe_2min_num <- safe_2_min %>% 
               group_by(Ward) %>% 
               summarise(Flushing_2_Min=sum(Ward==Ward))
 
@@ -71,6 +77,7 @@ safe_levels <- inner_join(safe_2_min, safe_45_sec, by = c('SampleID', 'Zip.Code'
 
 safe_levels <- inner_join(safe_levels, safe_first_draw, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
 
+# Creates a dataframe that counts the number of houses that are in the safe zone for each sample tests.
 safe_num <- left_join(safe_first_num, safe_45sec_num)
 
 safe_num <- left_join(safe_num, safe_2min_num)
@@ -80,37 +87,41 @@ safe_num[is.na(safe_num)] <- 0
 safe_num <- as.data.frame(safe_num)
 
 #--------------------------------------------------------------#
-# This section checks which households tested above the worrisome level of led (5ppb-15ppb).
+# This section checks which households contain a relatively safe, but dangerous level of led in the water (5 ppb-15 ppb).
 
-# Obtains the households with ppb levels above the EPA allowed level (15ppb) for the first sample.
+# Obtains the households with ppb levels that are relatively safe, but dangerous level of led in the water (5 ppb-15 ppb) for the first draw samples.
 warning_first_draw <- data %>% 
                       filter(First_Draw > 5, First_Draw < 15)
 
+# Counts the number of households 
 warning_first_num <- warning_first_draw %>% 
                      group_by(Ward) %>% 
                      summarise(First_Draw=sum(Ward==Ward))
 
-# Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 45 seconds after flushing.
+# Obtains the households with ppb levels that are relatively safe, but dangerous level of led in the water (5 ppb-15 ppb) for the samples 45 seconds after flushing.
 warning_45_sec <- data %>% 
                   filter(Flushing_45_Sec > 5, Flushing_45_Sec < 15)
 
+# Counts the number of households with ppb levels that are relatively safe, but dangerous level of led in the water (5 ppb-15 ppb) for the samples 45 seconds after flushing.
 warning_45sec_num <- warning_45_sec %>% 
                      group_by(Ward) %>% 
                      summarise(Flushing_45_Sec=sum(Ward==Ward))
 
-# Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 2 minutes after flushing.
+# Obtains the households with ppb levels that are relatively safe, but dangerous level of led in the water (5 ppb-15 ppb) for the samples 2 minutes after flushing.
 warning_2_min <- data %>% 
                  filter(Flushing_2_Min > 5, Flushing_2_Min < 15)
 
+# Counts the number of households with ppb levels that are relatively safe, but dangerous level of led in the water (5 ppb-15 ppb) for the samples 2 minutes after flushing.
 warning_2min_num <- warning_2_min %>% 
                     group_by(Ward) %>% 
                     summarise(Flushing_2_Min=sum(Ward==Ward))
 
-# Combines the households that have high ppb levels for all 3 samples.
+# Combines the households that have relatively safe, but dangerous ppb levels for all 3 samples.
 warning_levels <- inner_join(warning_2_min, warning_45_sec, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
 
 warning_levels <- inner_join(warning_levels, warning_first_draw, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
 
+# Creates a dataframe that counts the number of houses that have relatively safe, but still dangerous ppb levels for each sample tests.
 warning_num <- left_join(warning_first_num, warning_45sec_num)
 
 warning_num <- left_join(warning_num, warning_2min_num)
@@ -126,6 +137,7 @@ warning_num <- as.data.frame(warning_num)
 above_epa_first_draw <- data %>% 
                         filter(First_Draw > 15)
 
+# Counts the households with ppb levels above the EPA allowed level (15ppb) for the first sample.
 above_first_num <- above_epa_first_draw %>% 
                    group_by(Ward) %>% 
                    summarise(First_Draw=sum(Ward==Ward))
@@ -134,6 +146,7 @@ above_first_num <- above_epa_first_draw %>%
 above_epa_45_sec <- data %>% 
                     filter(Flushing_45_Sec > 15)
 
+# Counts the households with ppb levels above the EPA allowed level (15ppb) for the first sample.
 above_45sec_num <- above_epa_45_sec %>% 
                    group_by(Ward) %>% 
                    summarise(Flushing_45_Sec=sum(Ward==Ward))
@@ -142,6 +155,7 @@ above_45sec_num <- above_epa_45_sec %>%
 above_epa_2_min <- data %>% 
                    filter(Flushing_2_Min > 15)
 
+# Counts the households with ppb levels above the EPA allowed level (15ppb) for the first sample.
 above_2min_num <- above_epa_2_min %>% 
                   group_by(Ward) %>% 
                   summarise(Flushing_2_Min=sum(Ward==Ward))
@@ -151,6 +165,7 @@ above_epa <- inner_join(above_epa_2_min, above_epa_45_sec, by = c('SampleID', 'Z
 
 above_epa <- inner_join(above_epa, above_epa_first_draw, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
 
+# Creates a dataframe that counts the number of houses that have dangerous levels of lead in their water for each sample tests.
 above_num <- left_join(above_first_num, above_45sec_num)
 
 above_num  <- left_join(above_num, above_2min_num)
@@ -324,9 +339,9 @@ If the sample is 15 ppb or above, a range above the federal action level for lea
 
 Ppb stands for Parts Per Billion. It is the unit used to measure how much lead is in the water.
 
-**What Does This Graph Show?**
+**What Does This Graphic Show?**
+We will compare the number of households that reported acceptable levels of lead, realitvely safe levels of lead, and dangerous levels of lead.
 
-As we can see, we can see the number of 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(shiny)
