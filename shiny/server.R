@@ -4,6 +4,8 @@ library(dplyr)
 library(ggplot2)
 library(ggmap)
 
+source("scripts/help_find.r")
+
 shinyServer(
   function(input, output) {
     output$plot1 <- renderPlot({

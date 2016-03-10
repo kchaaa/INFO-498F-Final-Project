@@ -16,7 +16,7 @@ shinyUI(fluidPage(
     column(width = 3,
            div(class = "option-group"),
            radioButtons("dataset", "Data set",
-                        choices = c("First Draw", "45 Seconds", "2 Minutes"), inline = TRUE),
+                        choices = c("First Draw", "45 Seconds", "2 Minutes"), inline = TRUE)
            )
   )
 ))
