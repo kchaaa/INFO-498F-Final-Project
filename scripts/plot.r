@@ -13,16 +13,26 @@ plot2 <- function(dataset) {
 }
 
 stackbar <- plot_ly(
-  x = warning_levels[,3],
-  y = warning_levels[,6],
-  name = "Warning Level",
+  x = safe_num[,1],
+  y = safe_num[,2],
+  name = "Safe Level",
   type = "bar"
-)
-stackbar2 <- add_trace(
-  p,
-  x = above_epa[,3],
-  y = above_epa[,6],
-  name = "Action Level"
-) %>% 
-  layout(barmode = "stack")
+  ) %>% 
+ add_trace(
+  x = warning_num[,1],
+  y = warning_num[,2],
+  name = "Warning Level"
+  ) %>% 
+  add_trace(
+    x = above_num[,1],
+    y = above_num[,2],
+    name = "Danger Level"
+  ) %>% 
+  layout(
+    xaxis = list(title = "Wards"),
+    yaxis = list(title = "Number of Houses"),
+    barmode = "stack"
+  )
+
+
 
