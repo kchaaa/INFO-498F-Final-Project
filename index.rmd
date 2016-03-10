@@ -282,7 +282,7 @@ num_ward_9 <- nrow(ward_9_high)
 ```
 
 
-# Image
+![Flint Resident Protesting Water Conditions](http://assets.rollingstone.com/assets/2016/article/who-poisoned-flint-michigan-20160122/225359/large_rect/1453440373/1401x788-flint-opener.jpg)
 
 
 **What is the Flint Water Crisis?**
@@ -304,15 +304,20 @@ The lead-infected water has serious health effects on the residents of Flint esp
 **How is the Test Conducted?**
 
 A few months ago, a test was done in Flint. Three tests were conducted using the residents' toilets: 
+
 1) the first draw, 
+
 2) 45 seconds after flushing,  
+
 3) 2 minutes after flushing. 
 
 **What Do the Results of the Tests Mean?**
 
 If the sample is below 5 ppb, the EPA deems this range as acceptable. 
+
 If the sample is between 5 ppb and 14 ppb, then the water is relatively safe, but it is on the cusp of the danger. 
-If the sample is 15 ppb or above,   a range above the federal action level for lead, but can be treated by filters.
+
+If the sample is 15 ppb or above, a range above the federal action level for lead, but can be treated by filters.
 
 **What is ppb?**
 
@@ -320,7 +325,6 @@ Ppb stands for Parts Per Billion. It is the unit used to measure how much lead i
 
 
 
-# Stacked Bar Chart
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(shiny)
 library(plotly)
