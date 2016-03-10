@@ -22,41 +22,21 @@ plot2 <- function(dataset) {
                   yaxis = list(title = "Pb Level 2 Min After")))
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-stackbar <- function(name) { plot_ly(
-  x = safe_num[, 1],
-  y = safe_num[, name],
-  name = "Safe Level",
-  type = "bar",
-  marker = list(color = toRGB("springgreen4"))
-  ) %>% 
- add_trace(
-  x = warning_num[, 1],
-  y = warning_num[, name],
-  name = "Warning Level",
-  marker = list(color = toRGB("darkorange"))
-  ) %>% 
-  add_trace(
-    x = above_num[, 1],
-    y = above_num[, name],
-    name = "Danger Level",
-    marker = list(color = toRGB("firebrick2"))
-  ) %>% 
-  layout(
-    xaxis = list(title = "Wards"),
-    yaxis = list(title = "Number of Houses"),
-    barmode = "stack"
-  )
+stackbar <- function(name) { 
+  return(plot_ly(x = safe_num[, 1],
+                 y = safe_num[, name],
+                 name = "Safe Level",
+                 type = "bar",
+                 marker = list(color = toRGB("springgreen4"))) %>% 
+       add_trace(x = warning_num[, 1],
+                 y = warning_num[, name],
+                 name = "Warning Level",
+                 marker = list(color = toRGB("darkorange"))) %>% 
+       add_trace(x = above_num[, 1],
+                 y = above_num[, name],
+                 name = "Danger Level",
+                 marker = list(color = toRGB("firebrick2"))) %>% 
+          layout(xaxis = list(title = "Wards"),
+                 yaxis = list(title = "Number of Houses"),
+                 barmode = "stack"))
 }
