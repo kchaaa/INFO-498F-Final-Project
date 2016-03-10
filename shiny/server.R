@@ -1,10 +1,16 @@
 library(plotly)
 library(shiny)
 library(dplyr)
+library(ggplot2)
 
-source("scripts/plot.R")
 source("scripts/help_find.R")
 
-shinyServer(function(input, output) {
- 
+filter_loc <- read.csv("data/Flint_Water_Filter_Locations.csv")
+
+shinyServer(
+  function(input, output) {
+    output$plot1 <- renderPlot({
+      p <- get_filter_map
+      print(p)
+    })
   })
