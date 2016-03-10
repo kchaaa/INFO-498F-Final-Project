@@ -25,6 +25,6 @@ shinyApp(
   #--
   server = function(input, output) {
     output$bar <- renderPlotly({
-      stackbar(input$choice)
+      stackbar(safe_num, warning_num, above_num, input$choice)
     })
   })
