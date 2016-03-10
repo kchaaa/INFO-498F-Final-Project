@@ -1,4 +1,3 @@
-setwd("C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project")
 data <- read.csv("data/Flint-Samples-FINAL.CSV")
 data2 <- read.csv("data/Flint_Water_Filter_Locations.CSV")
 #-------------------------

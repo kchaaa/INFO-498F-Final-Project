@@ -152,7 +152,7 @@ above_epa <- inner_join(above_epa, above_epa_first_draw, by = c('SampleID', 'Zip
 
 above_num <- left_join(above_first_num, above_45sec_num)
 
-above_num  <- left_join(above_min, above_2min_num)
+above_num  <- left_join(above_num, above_2min_num)
 
 above_num[is.na(above_num)] <- 0
 
