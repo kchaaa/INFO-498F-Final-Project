@@ -29,66 +29,93 @@ colnames(data)[6] <- 'Flushing_2_Min'
 
 # Obtains the households with the highest level of lead (ppb) from the first sample.
 max_first_draw <- data %>% 
-  filter(max(First_Draw) == First_Draw) %>% 
-  select(Ward, First_Draw)
+                  filter(max(First_Draw) == First_Draw) %>% 
+                  select(Ward, First_Draw)
 
 # Obtains the households with the highest level of lead (ppb) from the sample 45 seconds after flushing.
 max_45_sec <- data %>% 
-  filter(max(Flushing_45_Sec) == Flushing_45_Sec) %>% 
-  select(Ward, Flushing_45_Sec)
+              filter(max(Flushing_45_Sec) == Flushing_45_Sec) %>% 
+              select(Ward, Flushing_45_Sec)
 
 # Obtains the households with the highest level of lead (ppb) from the sample 2 minutes after flushing.
 max_2_min <- data %>% 
-  filter(max(Flushing_2_Min) == Flushing_2_Min) %>% 
-  select(Ward, Flushing_2_Min)
+             filter(max(Flushing_2_Min) == Flushing_2_Min) %>% 
+             select(Ward, Flushing_2_Min)
 #--------------------------------------------------------------#
 # This section checks which households tested below worrisome level (0-5ppb)
+
 # Obtains the households with ppb levels below the EPA allowed level (5ppb) for the first sample.
 safe_first_draw <- data %>% 
-  filter(First_Draw < 5)
-safe_first_num <- safe_first_draw %>% group_by(Ward) %>% summarise(First_Ward_Num=sum(Ward==Ward))
+                   filter(First_Draw < 5)
+                   safe_first_num <- safe_first_draw %>% 
+                   group_by(Ward) %>% summarise(First_Ward_Num=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 45 seconds after flushing.
 safe_45_sec <- data %>% 
-  filter(Flushing_45_Sec < 5)
-safe_45sec_num <- safe_45_sec %>% group_by(Ward) %>% summarise(Sec_Ward_Num=sum(Ward==Ward))
+               filter(Flushing_45_Sec < 5)
+
+safe_45sec_num <- safe_45_sec %>% 
+                  group_by(Ward) %>% 
+                  summarise(Sec_Ward_Num=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 2 minutes after flushing.
 safe_2_min <- data %>% 
-  filter(Flushing_2_Min < 5)
-safe_2min_num <- safe_2_min %>% group_by(Ward) %>% summarise(Min_Ward_Num=sum(Ward==Ward))
+              filter(Flushing_2_Min < 5)
+              safe_2min_num <- safe_2_min %>% 
+              group_by(Ward) %>% 
+              summarise(Min_Ward_Num=sum(Ward==Ward))
 
 # Combines the households that have high ppb levels for all 3 samples.
 safe_levels <- inner_join(safe_2_min, safe_45_sec, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
+
 safe_levels <- inner_join(safe_levels, safe_first_draw, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
+
 safe_num <- left_join(safe_first_num, safe_45sec_num)
+
 safe_num <- left_join(safe_num, safe_2min_num)
+
 safe_num[is.na(safe_num)] <- 0
+
 safe_num <- as.data.frame(safe_num)
+
 #--------------------------------------------------------------#
 # This section checks which households tested above the worrisome level of led (5ppb-15ppb).
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the first sample.
 warning_first_draw <- data %>% 
-  filter(First_Draw > 5, First_Draw < 15)
-warning_first_num <- warning_first_draw %>% group_by(Ward) %>% summarise(First_Ward_Num=sum(Ward==Ward))
+                      filter(First_Draw > 5, First_Draw < 15)
+
+warning_first_num <- warning_first_draw %>% 
+                     group_by(Ward) %>% 
+                     summarise(First_Ward_Num=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 45 seconds after flushing.
 warning_45_sec <- data %>% 
-  filter(Flushing_45_Sec > 5, Flushing_45_Sec < 15)
-warning_45sec_num <- warning_45_sec %>% group_by(Ward) %>% summarise(Sec_Ward_Num=sum(Ward==Ward))
+                  filter(Flushing_45_Sec > 5, Flushing_45_Sec < 15)
+
+warning_45sec_num <- warning_45_sec %>% 
+                     group_by(Ward) %>% 
+                     summarise(Sec_Ward_Num=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 2 minutes after flushing.
 warning_2_min <- data %>% 
-  filter(Flushing_2_Min > 5, Flushing_2_Min < 15)
-warning_2min_num <- warning_2_min %>% group_by(Ward) %>% summarise(Min_Ward_Num=sum(Ward==Ward))
+                 filter(Flushing_2_Min > 5, Flushing_2_Min < 15)
+
+warning_2min_num <- warning_2_min %>% 
+                    group_by(Ward) %>% 
+                    summarise(Min_Ward_Num=sum(Ward==Ward))
 
 # Combines the households that have high ppb levels for all 3 samples.
 warning_levels <- inner_join(warning_2_min, warning_45_sec, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
+
 warning_levels <- inner_join(warning_levels, warning_first_draw, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
+
 warning_num <- left_join(warning_first_num, warning_45sec_num)
+
 warning_num <- left_join(warning_num, warning_2min_num)
+
 warning_num[is.na(warning_num)] <- 0
+
 warning_num <- as.data.frame(warning_num)
 
 #--------------------------------------------------------------#
@@ -96,25 +123,39 @@ warning_num <- as.data.frame(warning_num)
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the first sample.
 above_epa_first_draw <- data %>% 
-  filter(First_Draw > 15)
-above_first_num <- above_epa_first_draw %>% group_by(Ward) %>% summarise(First_Ward_Num=sum(Ward==Ward))
+                        filter(First_Draw > 15)
+
+above_first_num <- above_epa_first_draw %>% 
+                   group_by(Ward) %>% 
+                   summarise(First_Ward_Num=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 45 seconds after flushing.
 above_epa_45_sec <- data %>% 
-  filter(Flushing_45_Sec > 15)
-above_45sec_num <- above_epa_45_sec %>% group_by(Ward) %>% summarise(Sec_Ward_Num=sum(Ward==Ward))
+                    filter(Flushing_45_Sec > 15)
+
+above_45sec_num <- above_epa_45_sec %>% 
+                   group_by(Ward) %>% 
+                   summarise(Sec_Ward_Num=sum(Ward==Ward))
 
 # Obtains the households with ppb levels above the EPA allowed level (15ppb) for the sample 2 minutes after flushing.
 above_epa_2_min <- data %>% 
-  filter(Flushing_2_Min > 15)
-above_2min_num <- above_epa_2_min %>% group_by(Ward) %>% summarise(Min_Ward_Num=sum(Ward==Ward))
+                   filter(Flushing_2_Min > 15)
+
+above_2min_num <- above_epa_2_min %>% 
+                  group_by(Ward) %>% 
+                  summarise(Min_Ward_Num=sum(Ward==Ward))
 
 # Combines the households that have high ppb levels for all 3 samples.
 above_epa <- inner_join(above_epa_2_min, above_epa_45_sec, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
+
 above_epa <- inner_join(above_epa, above_epa_first_draw, by = c('SampleID', 'Zip.Code', 'Ward', 'First_Draw', 'Flushing_45_Sec', 'Flushing_2_Min', 'Notes'), copy=FALSE)
+
 above_num <- left_join(above_first_num, above_45sec_num)
+
 above_num  <- left_join(above_min, above_2min_num)
+
 above_num[is.na(above_num)] <- 0
+
 above_num <- as.data.frame(above_num)
 
 #--------------------------------------------------------------#
@@ -160,64 +201,82 @@ num_all_high_danger <- nrow(above_epa)
 
 # Checks the households in Ward 1
 ward_1 <- data %>% 
-            filter(Ward == 1)
+          filter(Ward == 1)
+
 ward_1_high <- ward_1 %>% 
-                filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+               filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_1 <- nrow(ward_1_high)
 
 # Checks the households in Ward 2
 ward_2 <- data %>% 
-  filter(Ward == 2)
+          filter(Ward == 2)
+
 ward_2_high <- ward_2 %>% 
-  filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+               filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_2 <- nrow(ward_2_high)
 
 # Checks the households in Ward 3
 ward_3 <- data %>% 
-  filter(Ward == 3)
+          filter(Ward == 3)
+
 ward_3_high <- ward_3 %>% 
-  filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+               filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_3 <- nrow(ward_3_high)
 
 # Checks the households in Ward 4
 ward_4 <- data %>% 
-  filter(Ward == 4)
+          filter(Ward == 4)
+
 ward_4_high <- ward_4 %>% 
-  filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+               filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_4 <- nrow(ward_4_high)
 
 # Checks the households in Ward 5
 ward_5 <- data %>% 
-  filter(Ward == 5)
+         filter(Ward == 5)
+
 ward_5_high <- ward_5 %>% 
-  filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+               filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_5 <- nrow(ward_5_high)
 
 # Checks the households in Ward 6
 ward_6 <- data %>% 
-  filter(Ward == 6)
+          filter(Ward == 6)
+
 ward_6_high <- ward_6 %>% 
-  filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+              filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_6 <- nrow(ward_6_high)
 
 # Checks the households in Ward 7
 ward_7 <- data %>% 
-  filter(Ward == 7)
+          filter(Ward == 7)
+
 ward_7_high <- ward_7 %>% 
-  filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+               filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_7 <- nrow(ward_7_high)
 
 # Checks the households in Ward 8
 ward_8 <- data %>% 
-  filter(Ward == 8)
+          filter(Ward == 8)
+
 ward_8_high <- ward_8 %>% 
-  filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+              filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_8 <- nrow(ward_8_high)
 
 # Checks the households in Ward 9
 ward_9 <- data %>% 
-  filter(Ward == 9)
+          filter(Ward == 9)
+
 ward_9_high <- ward_9 %>% 
-  filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+               filter(First_Draw > 15 | Flushing_45_Sec > 15 | Flushing_2_Min > 15)
+
 num_ward_9 <- nrow(ward_9_high)
 ```
