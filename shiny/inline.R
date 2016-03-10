@@ -9,8 +9,7 @@ data2 <- read.csv("data/Flint_Water_Filter_Locations.CSV")
 # This section implements the shiny framework in an inline fashion
 library(shiny)
 library(plotly)
-setdata <- list("Above EPA" = above_epa, "Warning Levels" = warning_levels)
-flush <- colnames(data)[4:6]
+names <- colnames(safe_num[2:4])
 shinyApp(
   ui = fluidPage(
     titlePanel("Flint Water Contamination"),
@@ -18,24 +17,16 @@ shinyApp(
       sidebarPanel(
         "Contamination",
         selectInput("choice", label = h3("Time"),
-                    choices = flush, selected = "Pb.Bottle.1..ppb....First.Draw"),
-        selectInput("dataset", label = h3("Warning Level"),
-                    choices = setdata, selected = warning_levels)
+                    choices = names, selected = "First_Ward_Num")
       ),
       mainPanel(
-        tabsetPanel(
-          tabPanel("Bar", plotlyOutput("bar")),
-          tabPanel("Scatter", plotlyOutput("warning"))
-        )
+        plotlyOutput("bar")
       )
     )
   ),
   #--
   server = function(input, output) {
     output$bar <- renderPlotly({
-      plot(data, input$choice)
-    })
-    output$warning <- renderPlotly({
-      plot2(input$dataset)
+      stackbar(input$choice)
     })
   })

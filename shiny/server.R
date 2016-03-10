@@ -4,9 +4,9 @@ library(dplyr)
 library(ggplot2)
 library(ggmap)
 
-source("/Users/chasekaylee/info498f/INFO-498F-Final-Project/scripts/help_find.R")
+source("c:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/scripts")
 
-filter_loc <- read.csv("/Users/chasekaylee/info498f/INFO-498F-Final-Project/data/Flint_Water_Filter_Locations.csv")
+filter_loc <- read.csv("C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/data/Flint_Water_Filter_Locations.csv")
 
 shinyServer(
   function(input, output) {
