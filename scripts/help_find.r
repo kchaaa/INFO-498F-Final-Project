@@ -5,7 +5,7 @@ require(mapproj)
 require(sp)
 
 # Reads in the dataset.
-filter_data <- read.csv('/Users/Pema/info498f/INFO-498F-Final-Project/data/Flint_Water_Filter_Locations.csv')
+filter_data <- read.csv('data/Flint_Water_Filter_Locations.csv')
 
 # Gets the terrain map of Flint, Michigan
 map <- qmap('Flint', zoom = 12, maptype = 'terrain')
