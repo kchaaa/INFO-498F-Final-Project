@@ -1,6 +1,6 @@
-# Flint Water Crisis Report
+<center># Flint Water Crisis Report</center>
 
-*Contributors: Pema Sherpa, Kevin Cha, Nathan Yin, Chase Lee*
+<center>*Contributors: Pema Sherpa, Kevin Cha, Nathan Yin, Chase Lee*</center>
 
 ---
 
