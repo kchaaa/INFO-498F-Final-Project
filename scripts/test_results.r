@@ -48,7 +48,7 @@ get_lead_average <- function(data_month) {
                     mutate(lead_avg = mean(Lead_ppb))
 }
 
-# Combines the shit above into the shit you see below
+# Uses the function above and puts it into the function below
 avg <- function(month) {
         obj1 <- month_select(month)
         lead <- get_lead_average(obj1)
@@ -56,25 +56,25 @@ avg <- function(month) {
 }
 
 avg_sep <- avg("9")
-avg_sep$Date_Submitted <- "September"
+avg_sep$Date_Submitted <- "Sep"
 
 avg_oct <- avg("10")
-avg_oct$Date_Submitted <- "October"
+avg_oct$Date_Submitted <- "Oct"
 
 avg_nov <- avg("11")
-avg_nov$Date_Submitted <- "November"
+avg_nov$Date_Submitted <- "Nov"
 
 avg_dec <- avg("12")
-avg_dec$Date_Submitted <- "December"
+avg_dec$Date_Submitted <- "Dec"
 
 avg_jan <- avg("1/")
-avg_jan$Date_Submitted <- "January"
+avg_jan$Date_Submitted <- "Jan"
 
 avg_feb <- avg("2")
-avg_feb$Date_Submitted <- "February"
+avg_feb$Date_Submitted <- "Feb"
 
 avg_mar <- avg("3")
-avg_mar$Date_Submitted <- "March"
+avg_mar$Date_Submitted <- "Mar"
 
 # Finds the number of houses that are below 5 ppb
 safe_level <- function(data) {
