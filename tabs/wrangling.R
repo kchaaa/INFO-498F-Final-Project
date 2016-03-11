@@ -7,13 +7,13 @@ library(dplyr)
 library(knitr)
 
 # Import helper scripts.
-#source('C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/scripts/help_find.r')
-#source('C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/scripts/plot.r')
-#source('C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/scripts/test_results.r')
+source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/help_find.r')
+source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/plot.r')
+source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/test_results.r')
 #--------------------------------------------------------------#
 # This dataset only deals with 271 households and contains flushing test data
 # Reads in the dataset.
-data <- read.csv('C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/data/Flint-Samples-FINAL.csv')
+data <- read.csv('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/data/Flint-Samples-FINAL.csv')
 data <- data[-c(91),]
 
 # Renames 3 of the columns to be more readable
@@ -24,7 +24,7 @@ colnames(data)[6] <- 'Flushing_2_Min'
 #--------------------------------------------------------------#
 
 # This data set contains the amount of ppb of lead and copper for each samples house
-flint_data <- read.csv("C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+flint_data <- read.csv("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
 
 # Renames 3 of the columns to be more readable
 colnames(flint_data)[2] <- 'Date_Submitted'

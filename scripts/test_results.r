@@ -4,6 +4,7 @@ library(gdata)
 # setwd("/Users/chasekaylee/Desktop/info498f/INFO-498F-Final-Project")
 #flint_data <- read.csv("/Users/Pema/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
 #flint_data <- read.csv("C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+flint_data <-read.csv("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
 
 # Renames 3 of the columns to be more readable
 colnames(flint_data)[2] <- 'Date_Submitted'
