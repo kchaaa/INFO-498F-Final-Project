@@ -317,17 +317,25 @@ num_ward_9 <- nrow(ward_9_high)
 ![Flint Resident Protesting Water Conditions](http://assets.rollingstone.com/assets/2016/article/who-poisoned-flint-michigan-20160122/225359/large_rect/1453440373/1401x788-flint-opener.jpg)
 
 
-###What is the Flint Water Crisis?
+###What is happening in Flint?
 
-The Flint Water Crisis is about how the residents of Flint have been suffering from lead-infected water.
+In April 2013, the Flint city council voted to join the Karegnondi Water Authority (KWA) that promised that **they would get water from Lake Huron.** This deal will save the city $19 million over eight years instead of continuing to pay Detroit for water. 
 
-###How Did This Happen?
+In response to Flint's decision, **Detroit announced that they would stop providing Flint water** in April 2014 even though the **KWA won't be ready for another 3 years.** Despite previous concerns about the conditions of the river, the emergency manager in Flint decided that they should **use the Flint River as a backup water source.** After using it, residents begin to **notice and complain about the poor tasting and smelly water.** The city found fecal coliform bacteria and recommended residents filter their water and buy bottled water.
 
-In April 2013, the Flint city council voted to join the Karegnondi Water Authority (KWA) that promised that they would get water from Lake Huron. This deal will save the city $19 million over eight years instead of continuing to pay Detroit for water. In response to Flint's decision, Detroit announced that they would stop providing Flint water in April 2014 even though the KWA won't be ready for another 3 years. Despite previous concerns about the conditions of the river, the emergency manager in Flint decided that they should use the Flint River as a backup water source. After using it, residents begin to notice and complain about the poor tasting and smelly water. The city found fecal coliform bacteria and recommended residents boil their water and buy bottled water.
+A group of researchers at Virginia Tech eventually decided to study the water and, in September 2015, concluded that it was **"creating a public health threat."** The river water, they found, was more corrosive than Lake Huron's water, which **damaged older pipes and allowed iron and lead to enter the city's water supply.**
+
+The water change is also a possible cause of an **outbreak of Legionnaires' disease** in the county that has **killed 10 people and affected another 77.**
 
 ###How Did the Government Respond?
 
-The government of Michigan and Flint worked to try to fix the water source; however, the state government refused to allow Flint to switch their water supply back to Detroit. Due to the government's effort, the city finally was able to improve the quality fo their water. Their celebration would be short because scientists soon found lead in the water due to old pipes and poor infrastructure. The State government promised to use $1 million to buy water filters for the city of Flint and finally allowed Flint to use Detroit water again. The government recommended they boil water as a way to clean their water, but boiling water results in higher lead concentration because a heavy metal like lead doesn't evaporate like water does. 
+On January 16, 2016, President Obama signed an emergency declaration ordering federal assistance to support state and local response efforts in Flint, Michigan. The U.S. Department of Health and Human Services (HHS) has been designated the lead federal agency responsible for coordinating federal government response and recovery efforts.
+
+The government of Michigan and Flint worked to try to fix the water source; however, the state government refused to allow Flint to switch their water supply back to Detroit. Due to the government's effort, the city finally was able to improve the quality fo their water. 
+
+Their celebration would be short because scientists soon found lead in the water due to old pipes and poor infrastructure. 
+
+The State government promised to use $1 million to buy water filters for the city of Flint and finally allowed Flint to use Detroit water again. The government recommended they boil water as a way to clean their water, but boiling water results in higher lead concentration because a heavy metal like lead doesn't evaporate like water does. 
 
 ###What Are the Effects of Consuming Lead-Infected Water?
 
@@ -360,15 +368,26 @@ A few months ago, a test was done in Flint. Three tests were conducted using the
 
 ###What Do the Results of the Tests Mean?
 
-If the sample is below 5 ppb, the EPA deems this range as acceptable. 
+**0 ppb:** no lead detected in the drinking water
 
-If the sample is between 5 ppb and 14 ppb, then the water is relatively safe, but it is on the cusp of the danger. 
+**1-4 ppb:** the EPA deems this range as acceptable
 
-If the sample is 15 ppb or above, a range above the federal action level for lead, but can be treated by filters.
+**5-14 ppb:** exposure is a concern, but still below an EPA “federal action level”
+
+**15-49 ppb:** a range above the federal action level for lead, but can be treated by filters
+
+**50-149 ppb:** reaching dangerous levels, but can be treated by filters
+
+**150 and above:** a range at which the federal government says water filters might not work
 
 ###What is ppb?
 
 Ppb stands for Parts Per Billion. It is the unit used to measure how much lead is in the water.
+
+###What is a Ward?
+A ward is a district or section of a city. As we can see in the grpahic above, there are a total of 9 wards in Flint, MI. 
+
+###Which Ward is in the Most Danger? Least Danger?
 
 ###What Does This Graphic Show?
 We will compare the number of households that reported acceptable levels of lead, realitvely safe levels of lead, and dangerous levels of lead.
@@ -408,7 +427,7 @@ shinyApp(
   )
 ```
 
-###What is a Ward?
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 # Implements the line graph for shiny
 shinyApp(
@@ -427,9 +446,9 @@ shinyApp(
   options = list(height = 463)
 )
 ```
-A ward is a district or section of a city. As we can see in the grpahic above, there are a total of 9 wards in Flint, MI. 
 
-###Which Ward is in the Most Danger? Least Danger?
+
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 # Implements the line graph for shiny
 shinyApp(
