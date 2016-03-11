@@ -38,5 +38,5 @@ month_line <- function(data1, data2, data3, data4, data5, data6, data7) {
       return(plot_ly(x = x, y = y,
                      line = list(shape = "linear")) %>% 
               layout(xaxis = list(title = "Month"),
-                     yaxis = list(title = "Ave Lead Level(ppb)")))
+                     yaxis = list(title = "Average Lead Level(ppb)")))
 }
