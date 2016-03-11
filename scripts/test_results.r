@@ -30,5 +30,24 @@ month_select <- function(month) {
                 select(Date_Submitted, Lead_ppb, Copper_ppb)
 }
 
+# Change the variable Date_Submitted name to the actual month of each month's dataset
+september_data <- month_select("9")
+september_data$Date_Submitted <- "September"
 
-        
+october_data <- month_select("10")
+october_data$Date_Submitted <- "October"
+
+november_data <- month_select("11")
+november_data$Date_Submitted <- "November"
+
+december_data <- month_select("12")
+december_data$Date_Submitted <- "December"
+
+january_data <- month_select("1/")
+january_data$Date_Submitted <- "January"
+
+february_data <- month_select("2")
+february_data$Date_Submitted <- "February"
+
+march_data <- month_select("3")
+february_data$Date_Submitted <- "March"
