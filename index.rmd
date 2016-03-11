@@ -11,6 +11,7 @@ runtime: shiny
 
 # Requires dplyr, library
 library(dplyr)
+library(knitr)
 
 # Import helper scripts.
 source('scripts/help_find.r')
@@ -412,8 +413,26 @@ shinyApp(
 A ward is a district or section of a city. As we can see in the grpahic above, there are a total of 9 wards in Flint, MI. 
 
 ###Which Ward is in the Most Danger? Least Danger?
- 
-
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+source("scripts/test_results.r") 
+source("scripts/plot.r")
+# Implements the line graph for shiny
+shinyApp(
+  ui = fluidPage(
+    titlePanel("Flint Water Contamination"),
+      mainPanel(
+        plotlyOutput("bar")
+      )
+    ),
+  #--
+  server = function(input, output) {
+    output$bar <- renderPlotly({
+      month_line(avg_sep, avg_oct, avg_nov, avg_dec, avg_jan, avg_feb, avg_mar)
+    })
+  },
+  options = list(height = 463)
+)
+```
 # Map
 
 

@@ -32,7 +32,7 @@ stackbar <- function(data1, data2, data3, name) {
 # Line graph of the average lead amount across months
 month_line <- function(data1, data2, data3, data4, data5, data6, data7) {
       x = c(data1[1,1], data2[1,1], data3[1,1], 
-        data4[1,1], data5[1,1], data6[1,1], data7[1,1])
+            data4[1,1], data5[1,1], data6[1,1], data7[1,1])
       y = c(data1[1,5], data2[1,5], data3[1,5], 
             data4[1,5], data5[1,5], data6[1,5], data7[1,5])
       return(plot_ly(x = x, y = y,
@@ -40,4 +40,3 @@ month_line <- function(data1, data2, data3, data4, data5, data6, data7) {
               layout(xaxis = list(title = "Month"),
                      yaxis = list(title = "Ave Lead Level(ppb)")))
 }
-month_line(avg_sep, avg_oct, avg_nov, avg_dec, avg_jan, avg_feb, avg_mar)
