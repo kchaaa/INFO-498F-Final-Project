@@ -2,8 +2,8 @@
 library(dplyr)
 library(plotly)
 library(shiny)
-source("scripts/help_find.r")
-source("scripts/test_results.r")
+#source("C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/scripts/help_find.r")
+#source("C:/Users/Administrator.UWIT-JAIE3J3AAH/Documents/Code/info498f/INFO-498F-Final-Project/scripts/test_results.r")
 # Saves graph into a function to be used in the rmd
 # And takes in three different dataframes to be used in it
 stackbar <- function(data1, data2, data3, name) { 
