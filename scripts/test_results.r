@@ -1,8 +1,9 @@
 library(dplyr)
 library(gdata)
 
-#setwd("/Users/chasekaylee/Desktop/info498f/INFO-498F-Final-Project")
-flint_data <- read.csv("/Users/Pema/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+# setwd("/Users/chasekaylee/Desktop/info498f/INFO-498F-Final-Project")
+#flint_data <- read.csv("/Users/Pema/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+flint_data <- read.csv("data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
 
 # Renames 3 of the columns to be more readable
 colnames(flint_data)[2] <- 'Date_Submitted'
@@ -51,3 +52,26 @@ february_data$Date_Submitted <- "February"
 
 march_data <- month_select("3")
 february_data$Date_Submitted <- "March"
+
+# Calculates the average for lead and copper for each month
+avg_sep <- september_data %>% 
+  mutate(avg = mean(Copper_ppb)) 
+
+avg_oct <- october_data %>% 
+  mutate(avg = mean(Copper_ppb)) 
+
+avg_nov <- november_data %>% 
+  mutate(avg = mean(Copper_ppb)) 
+
+avg_dec <- december_data %>% 
+  mutate(avg = mean(Copper_ppb)) 
+
+avg_jan <- january_data %>% 
+  mutate(avg = mean(Copper_ppb)) 
+
+avg_feb <- february_data %>% 
+  mutate(avg = mean(Copper_ppb)) 
+
+avg_mar <- march_data %>% 
+  mutate(avg = mean(Copper_ppb)) 
+
