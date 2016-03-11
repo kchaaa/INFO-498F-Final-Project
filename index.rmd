@@ -366,6 +366,10 @@ A few months ago, a test was done in Flint. Three tests were conducted using the
 
 3) 2 minutes after flushing. 
 
+###What is ppb?
+
+Ppb stands for Parts Per Billion. It is the unit used to measure how much lead is in the water.
+
 ###What Do the Results of the Tests Mean?
 
 **0 ppb:** no lead detected in the drinking water
@@ -380,18 +384,11 @@ A few months ago, a test was done in Flint. Three tests were conducted using the
 
 **150 and above:** a range at which the federal government says water filters might not work
 
-###What is ppb?
-
-Ppb stands for Parts Per Billion. It is the unit used to measure how much lead is in the water.
-
 ###What is a Ward?
+
 A ward is a district or section of a city. As we can see in the grpahic above, there are a total of 9 wards in Flint, MI. 
 
 ###Which Ward is in the Most Danger? Least Danger?
-
-###What Does This Graphic Show?
-We will compare the number of households that reported acceptable levels of lead, realitvely safe levels of lead, and dangerous levels of lead.
-
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(shiny)
