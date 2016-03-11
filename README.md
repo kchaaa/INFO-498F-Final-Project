@@ -1,32 +1,6 @@
-# INFO-498F-Final-Project
-
-
-## OBJECTIVES:
-
-- [x] Incorporate sufficient background information
+# Flint Water Crisis Report
 
 ---
 
-- [ ] Use of Interactivity
-* Work on an interactive bar/scatter plot
-* Work on a map plot that shows the filter locations and information when click/hovered
-* Shiny widget that allows us to go between the datasets (test types)
+Our final project focuses on the current water crisis that is devastating the city of Flint, Michigan. We obtained data of the city's water lead and copper level based on the locations around the city and created visualizations to answer questions about the dataset. The water crisis is a very controversial and an on-going topic in the Presidential debates. We hope to raise awareness about this subject to help others gain a better understanding of the situation through our visualizations.
 
----
-
-- [ ] Visual Representation
-* Bar/Scatter graph
-* City Map 
-* Add a photo of the river showing the effect of lead on the river
-
----
-
-- [ ] UI / UX
-* Intuitive page 
-* Well laid out
-
----
-
-- [ ] Code Quality
-* Clear, well documented code
-* Fix any redundant code in the script.R, fix spacing and stylistic elements	
