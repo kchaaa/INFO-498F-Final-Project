@@ -2,7 +2,7 @@
 library(dplyr)
 library(plotly)
 library(shiny)
-
+source("scripts/help_find.r")
 source("scripts/test_results.r")
 # Saves graph into a function to be used in the rmd
 # And takes in three different dataframes to be used in it
@@ -34,8 +34,8 @@ stackbar <- function(data1, data2, data3, name) {
 month_line <- function(data1, data2, data3, data4, data5, data6, data7) {
       x = c(data1[1,1], data2[1,1], data3[1,1], 
             data4[1,1], data5[1,1], data6[1,1], data7[1,1])
-      y = c(data1[1,5], data2[1,5], data3[1,5], 
-            data4[1,5], data5[1,5], data6[1,5], data7[1,5])
+      y = c(data1[1,4], data2[1,4], data3[1,4], 
+            data4[1,4], data5[1,4], data6[1,4], data7[1,4])
       return(plot_ly(x = x, y = y,
                      line = list(shape = "linear")) %>% 
               layout(xaxis = list(title = "Month"),

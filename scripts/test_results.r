@@ -2,8 +2,8 @@ library(dplyr)
 library(gdata)
 
 # setwd("/Users/chasekaylee/Desktop/info498f/INFO-498F-Final-Project")
-flint_data <- read.csv("/Users/Pema/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
-# flint_data <- read.csv("data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+#flint_data <- read.csv("/Users/Pema/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+flint_data <- read.csv("data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
 
 # Renames 3 of the columns to be more readable
 colnames(flint_data)[2] <- 'Date_Submitted'
@@ -25,7 +25,7 @@ max_copper <- flint_data %>%
               select(Date_Submitted, Copper_ppb)
 
 # Function that will return a data frame of the Lead and Copper levels based on the Month
-month_select <- function(month) {
+month_select <- function(month, name) {
                 flint_data %>% 
                 filter(startsWith(Date_Submitted,  month)) %>% 
                 select(Date_Submitted, Lead_ppb, Copper_ppb)
@@ -47,6 +47,34 @@ get_lead_average <- function(data_month) {
                     data_month %>% 
                     mutate(lead_avg = mean(Lead_ppb))
 }
+
+# Combines the shit above into the shit you see below
+avg <- function(month) {
+        obj1 <- month_select(month)
+        lead <- get_lead_average(obj1)
+        return(lead)
+}
+
+avg_sep <- avg("9")
+avg_sep$Date_Submitted <- "September"
+
+avg_oct <- avg("10")
+avg_oct$Date_Submitted <- "October"
+
+avg_nov <- avg("11")
+avg_nov$Date_Submitted <- "November"
+
+avg_dec <- avg("12")
+avg_dec$Date_Submitted <- "December"
+
+avg_jan <- avg("1/")
+avg_jan$Date_Submitted <- "January"
+
+avg_feb <- avg("2")
+avg_feb$Date_Submitted <- "February"
+
+avg_mar <- avg("3")
+avg_mar$Date_Submitted <- "March"
 
 # Finds the number of houses that are below 5 ppb
 safe_level <- function(data) {
