@@ -42,13 +42,16 @@ month_line <- function(data1, data2, data3, data4, data5, data6, data7) {
                      yaxis = list(title = "Average Lead Level(ppb)")))
 }
 
-month_bar <- plot_ly(x = total[,1],
-                     y = total[,3],
+month_bar <- function(data) {
+             return(plot_ly(x = data[,1],
+                     y = data[,3],
                      name = "Warning",
                      type = "bar",
                      marker = list(color = toRGB("wheat"))) %>% 
-           add_trace(x = total[,1],
-                     y = total[,4],
+           add_trace(x = data[,1],
+                     y = data[,4],
                      name = "Danger",
                      marker = list(color = toRGB("firebrick2"))) %>% 
-              layout(barmode = "stack")
+              layout(barmode = "stack", xaxis = list(title = "Month"), 
+                     yaxis = list(title = "Number of Houses")))
+}
