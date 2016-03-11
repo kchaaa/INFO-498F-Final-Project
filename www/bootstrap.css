@@ -110,6 +110,7 @@ hr {
 p {
   text-align: center;
   text-align: justify;
+  margin-right: 2000px;
 }
 pre {
   overflow: auto;

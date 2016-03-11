@@ -22,24 +22,25 @@ shinyUI(
     p("In April 2013, the Flint city council voted to join the Karegnondi Water Authority (KWA) that promised that they would get water from Lake Huron. This deal will save the city $19 million over eight years instead of continuing to pay Detroit for water. In response to Flint's decision, Detroit announced that they would stop providing Flint water in April 2014 even though the KWA won't be ready for another 3 years. Despite previous concerns about the conditions of the river, the emergency manager in Flint decided that they should use the Flint River as a backup water source. After using it, residents begin to notice and complain about the poor tasting and smelly water. The city found fecal coliform bacteria and recommended residents boil their water and buy bottled water. Not long after, lead was found in the water."),
     h3("Effects of Lead Consumption"),
     p("The lead-infected water has serious health effects on the residents of Flint especially the children and pregnant women of Flint. There are medications that would reduce the amount of lead in their blood to reduce the negative effects of lead; however, no medication exist to treat for the adverse health effects."),
-    h4("Children"),
+    h4(strong("Children")),
     tags$ul(
       tags$li("Behavior and learning problems"),
       tags$li("Lower IQ and hyperactivity"),
       tags$li("Slowed growth"),
       tags$li("Hearing problems Anemia")
     ),
-    h4("Pregnant Women"),
+    h4(strong("Pregnant Women")),
     tags$ul(
       tags$li("Reduced growth of the fetus"),
       tags$li("Premature Birth")
     ),
-    h4("Adults"),
+    h4(strong("Adults")),
     tags$ul(
       tags$li("Cardiovascular effects, increased blood pressure and incidence of hypertension"),
       tags$li("Decreased kidney function"),
       tags$li("Reproductive problems (in both men and women)")
     ),
+    img(src = "http://a.abcnews.go.com/images/Health/GTY_Water_Flint_Michigan_ER_160113_4x3_992.jpg", width = "600", height = "400"),
     h3("How Did the Government Respond?"),
     p("On January 16, 2016, President Obama signed an emergency declaration ordering federal assistance to support state and local response efforts in Flint, Michigan. The U.S. Department of Health and Human Services (HHS) has been designated the lead federal agency responsible for coordinating federal government response and recovery efforts."),
     p("The government of Michigan and Flint worked to try to fix the water source; however, the state government refused to allow Flint to switch their water supply back to Detroit. Due to the government's effort, the city finally was able to improve the quality fo their water."),
@@ -100,7 +101,7 @@ shinyUI(
       h4("Time"),
       p("The lead concentration in the water is getting worse over time. Might be too large of an impact on the area which is affecting thousands of people. They need to work on fixing the pipes and infrastructure soon to prevent further contamination."),
       h3("What's Being Done About the Situation?"),
-      p("Filter Locations are set up throughout the city in areas like Fire Stations. However, we must note that there are only a few locations at the moment. Based on the map, only certain areas have filter locations which forces those who need filtered water to travel far in order to obtain some. The state and local government should work together to create more filter stations and focus on fixing the contaminated water."),
+      p("Filter Locations are set up throughout the city in areas like Fire Stations. However, we must note that there are only a few locations at the moment. Based on the map, only certain areas have filter locations which forces those who need filtered water to travel far in order to obtain some. The state and local government should work together to create more filter stations and focus on fixing the contaminated water as soon as possible."),
       plotOutput("plot1"),
       p(""),
       p("More information on what you can do and on the crisis:"),
