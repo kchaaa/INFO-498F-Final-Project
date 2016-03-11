@@ -2,8 +2,8 @@ library(dplyr)
 library(gdata)
 
 # setwd("/Users/chasekaylee/Desktop/info498f/INFO-498F-Final-Project")
-#flint_data <- read.csv("/Users/Pema/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
-flint_data <- read.csv("data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+flint_data <- read.csv("/Users/Pema/info498f/INFO-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+# flint_data <- read.csv("data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
 
 # Renames 3 of the columns to be more readable
 colnames(flint_data)[2] <- 'Date_Submitted'
@@ -13,7 +13,7 @@ colnames(flint_data)[6] <- 'Copper_ppb'
 flint_data$Lead_ppb <- as.numeric(gsub(",","", flint_data$Lead_ppb))
 flint_data$Copper_ppb <- as.numeric(gsub(",","", flint_data$Copper_ppb))
 
-#new <- mutate(test,address = paste(Street.. , Street.Name,",", City, ", MICH", Zip.Code))
+# new <- mutate(test,address = paste(Street.. , Street.Name,",", City, ", MICH", Zip.Code))
 flint_data$Lead_ppb <- as.integer(flint_data$Lead_ppb)
 
 max_lead <- flint_data %>% 
@@ -31,72 +31,22 @@ month_select <- function(month) {
                 select(Date_Submitted, Lead_ppb, Copper_ppb)
 }
 
-# Change the variable Date_Submitted name to the actual month of each month's dataset
-september_data <- month_select("9")
-september_data$Date_Submitted <- "September"
+# Function that gets the specific month's data
+month_data <- function(month_number) {
+              month_select(month_number)
+}
 
-october_data <- month_select("10")
-october_data$Date_Submitted <- "October"
+# Function that calculates the average copper level for each month
+get_copper_average <- function(data_month) {
+                      data_month %>% 
+                      mutate(copper_avg = mean(Copper_ppb))
+}
 
-november_data <- month_select("11")
-november_data$Date_Submitted <- "November"
-
-december_data <- month_select("12")
-december_data$Date_Submitted <- "December"
-
-january_data <- month_select("1/")
-january_data$Date_Submitted <- "January"
-
-february_data <- month_select("2")
-february_data$Date_Submitted <- "February"
-
-march_data <- month_select("3")
-march_data$Date_Submitted <- "March"
-
-# Calculates the average for copper for each month
-avg_sep <- september_data %>% 
-  mutate(copper_avg = mean(Copper_ppb)) 
-
-avg_oct <- october_data %>% 
-  mutate(copper_avg = mean(Copper_ppb)) 
-
-avg_nov <- november_data %>% 
-  mutate(copper_avg = mean(Copper_ppb)) 
-
-avg_dec <- december_data %>% 
-  mutate(copper_avg = mean(Copper_ppb)) 
-
-avg_jan <- january_data %>% 
-  mutate(copper_avg = mean(Copper_ppb)) 
-
-avg_feb <- february_data %>% 
-  mutate(copper_avg = mean(Copper_ppb)) 
-
-avg_mar <- march_data %>% 
-  mutate(copper_avg = mean(Copper_ppb)) 
-
-# Calculates the average for lead for each month
-
-avg_sep <- avg_sep %>% 
-  mutate(lead_avg = mean(Lead_ppb)) 
-
-avg_oct <- avg_oct %>% 
-  mutate(lead_avg = mean(Lead_ppb)) 
-
-avg_nov <- avg_nov %>% 
-  mutate(lead_avg = mean(Lead_ppb)) 
-
-avg_dec <- avg_dec %>% 
-  mutate(lead_avg = mean(Lead_ppb)) 
-
-avg_jan <- avg_jan %>% 
-  mutate(lead_avg = mean(Lead_ppb)) 
-
-avg_feb <- avg_feb %>% 
-  mutate(lead_avg = mean(Lead_ppb)) 
-
-avg_mar <- avg_mar %>% 
-  mutate(lead_avg = mean(Lead_ppb)) 
+# Function that calculates the average for lead for each month
+get_lead_average <- function(data_month) {
+                    data_month %>% 
+                    mutate(lead_avg = mean(Lead_ppb))
+}
 
 # Finds the number of houses that are below 5 ppb
 safe_level <- function(data) {
