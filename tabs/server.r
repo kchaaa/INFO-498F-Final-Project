@@ -4,10 +4,14 @@ shinyServer(function(input, output, session){
     stackbar(safe_num, warning_num, above_num, input$choice)
   })
   output$barstack <- renderPlotly({
-    month_bar(total)
+    month_bar(total, input$name)
   })
   output$bar2 <- renderPlotly({
     month_line(avg_sep, avg_oct, avg_nov, avg_dec, avg_jan, avg_feb, avg_mar)
+  })
+  output$plot1 <- renderPlot({
+    p <- get_filter_map
+    print(p)
   })
 }
 

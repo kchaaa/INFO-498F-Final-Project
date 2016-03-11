@@ -2,8 +2,8 @@
 library(dplyr)
 library(plotly)
 library(shiny)
-source("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/help_find.r")
-source("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/test_results.r")
+source("scripts/help_find.r")
+source("scripts/test_results.r")
 # Saves graph into a function to be used in the rmd
 # And takes in three different dataframes to be used in it
 stackbar <- function(data1, data2, data3, name) { 
@@ -42,16 +42,19 @@ month_line <- function(data1, data2, data3, data4, data5, data6, data7) {
                      yaxis = list(title = "Average Lead Level(ppb)")))
 }
 
-month_bar <- function(data) {
+month_bar <- function(data, name) {
+             if(name == "Safe_houses"){
+               color = "springgreen4"
+             } else if (name == "Warning_houses") {
+               color = "darkorange"
+             } else {
+               color = "firebrick2"
+             }
              return(plot_ly(x = data[,1],
-                     y = data[,3],
-                     name = "Warning",
+                     y = data[, name],
+                     name = "Level",
                      type = "bar",
-                     marker = list(color = toRGB("wheat"))) %>% 
-           add_trace(x = data[,1],
-                     y = data[,4],
-                     name = "Danger",
-                     marker = list(color = toRGB("firebrick2"))) %>% 
+                     marker = list(color = toRGB(color))) %>% 
               layout(barmode = "stack", xaxis = list(title = "Month"), 
                      yaxis = list(title = "Number of Houses")))
 }

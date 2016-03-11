@@ -1,10 +1,11 @@
 library(shiny)
 library(dplyr)
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/help_find.r')
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/plot.r')
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/test_results.r')
-source("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/tabs/wrangling.r")
+source('scripts/help_find.r')
+source('scripts/plot.r')
+source('scripts/test_results.r')
+source("tabs/wrangling.r")
 names <- colnames(safe_num[2:4])
+level_name <- colnames(total[2:4])
 #--------------------------------------------------------------#
 
 
@@ -71,16 +72,16 @@ shinyUI(
     )
   ),
   tabPanel("By Time",
-    mainPanel(
-      h3("How is the Test Conducted?"),
-      p(""),
-      plotlyOutput("bar2"),
-      plotlyOutput("barstack")
-    )
+    sidebarLayout(
+      sidebarPanel(
+        selectInput("name", label = h3("Test Type"), choices = level_name, selected = "Safe_houses")
+      ),
+      mainPanel(plotlyOutput("barstack"), plotlyOutput("bar2"))
+    ) 
   ),
   tabPanel("Help",
     mainPanel(
-      h3("Pema's Map"),
+      plotOutput("plot1"),
       h3("Flint is in Trouble")
     )
   )

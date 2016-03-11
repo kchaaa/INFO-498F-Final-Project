@@ -488,8 +488,6 @@ ui = fluidPage(
       cat("input$plot_hover:\n")
       str(input$plot_hover)
     })
-  },
-  options = list(height = 463)
-)
+  })
 
 ```
