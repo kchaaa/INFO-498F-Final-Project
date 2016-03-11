@@ -4,7 +4,7 @@ library(dplyr)
 library(ggplot2)
 library(ggmap)
 
-source("scripts/help_find.r")
+source("/Users/Pema/info498f/INFO-498F-Final-Project/scripts/help_find.r")
 
 shinyServer(
   function(input, output) {

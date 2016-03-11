@@ -1,13 +1,6 @@
-source("scripts/plot.r")
-#-------------------------
-# Exclusion of data should be more in depth rather than just eleiminating those with values above 100.
-# Possibly just omit the value that breaches 1000.
-#-------------------------
-#--------------------------------------------------------------#
-# This section implements the shiny framework in an inline fashion
 library(shiny)
 library(plotly)
-names <- colnames(safe_num[2:4])
+
 shinyApp(
   ui = fluidPage(
     titlePanel("Flint Water Contamination"),
