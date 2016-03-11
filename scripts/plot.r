@@ -3,6 +3,7 @@ library(dplyr)
 library(plotly)
 library(shiny)
 
+source("scripts/test_results.r")
 # Saves graph into a function to be used in the rmd
 # And takes in three different dataframes to be used in it
 stackbar <- function(data1, data2, data3, name) { 
@@ -40,3 +41,14 @@ month_line <- function(data1, data2, data3, data4, data5, data6, data7) {
               layout(xaxis = list(title = "Month"),
                      yaxis = list(title = "Average Lead Level(ppb)")))
 }
+
+month_bar <- plot_ly(x = total[,1],
+                     y = total[,3],
+                     name = "Warning",
+                     type = "bar",
+                     marker = list(color = toRGB("wheat"))) %>% 
+           add_trace(x = total[,1],
+                     y = total[,4],
+                     name = "Danger",
+                     marker = list(color = toRGB("firebrick2"))) %>% 
+              layout(barmode = "stack")

@@ -97,3 +97,42 @@ avg_feb <- avg_feb %>%
 
 avg_mar <- avg_mar %>% 
   mutate(lead_avg = mean(Lead_ppb)) 
+
+# Finds the number of houses that are below 5 ppb
+safe_level <- function(data) {
+  return(data %>% filter(Lead_ppb < 5) %>% group_by(Date_Submitted)
+  %>% summarise(Safe_houses=sum(Date_Submitted==Date_Submitted)))  
+}
+
+# Finds the number of houses that are between 5 and 15 ppb
+warning_level <- function(data) {
+  return(data %>% filter(Lead_ppb > 5, Lead_ppb < 15) %>% group_by(Date_Submitted)
+         %>% summarise(Warning_houses=sum(Date_Submitted==Date_Submitted)))  
+}
+
+# Finds the number of houses that are above 15 ppb
+danger_level <- function(data) {
+  return(data %>% filter(Lead_ppb > 15) %>% group_by(Date_Submitted)
+         %>% summarise(Danger_houses=sum(Date_Submitted==Date_Submitted)))  
+}
+
+# Combines safe, warning, and danger levels into one dataframe
+level <- function(data) {
+  safe <- safe_level(data)
+  warning <- warning_level(data)
+  danger <- danger_level(data)
+  month_level <- left_join(safe, warning)
+  month_final <- left_join(month_level, danger)
+  return(month_final)
+}
+
+sep <- level(avg_sep)
+oct <- level(avg_oct)
+nov <- level(avg_nov)
+dec <- level(avg_dec)
+jan <- level(avg_jan)
+feb <- level(avg_feb)
+mar <- level(avg_mar)
+
+total <- rbind(sep, oct, nov, dec, jan, feb, mar)
+total <- as.data.frame(total)
