@@ -383,7 +383,7 @@ names <- colnames(safe_num[2:4])
 shinyApp(
   # Ui Section
   ui = fluidPage(
-    titlePanel("Flint Water Contamination"),
+    titlePanel("Number of Houses per Contamination levels"),
     sidebarLayout(
       sidebarPanel(
         selectInput("choice", label = h3("Test Type"),
@@ -413,7 +413,7 @@ shinyApp(
 # Implements the line graph for shiny
 shinyApp(
   ui = fluidPage(
-    titlePanel("Flint Water Contamination"),
+    titlePanel("Number of Contaminated House by Danger Level per Month"),
       mainPanel(
         plotlyOutput("barstack")
       )
@@ -434,7 +434,7 @@ A ward is a district or section of a city. As we can see in the grpahic above, t
 # Implements the line graph for shiny
 shinyApp(
   ui = fluidPage(
-    titlePanel("Flint Water Contamination"),
+    titlePanel("Average Lead ppb per Month"),
       mainPanel(
         plotlyOutput("bar")
       )
@@ -448,6 +448,32 @@ shinyApp(
   options = list(height = 463)
 )
 ```
-# Map
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
 
+shinyApp(
+ui = fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      h4("Relief Stations")),
+      mainPanel(
+        plotOutput("plot1")
+      )
+  )
+  ),
+  server = function(input, output) {
+    output$plot1 <- renderPlot({
+      p <- get_filter_map
+      print(p)
+    })
+    
+    output$Hover_Info <- renderPrint({
+      cat("input$plot_hover:\n")
+      str(input$plot_hover)
+    })
+  },
+  options = list(height = 463)
+)
+
+```
