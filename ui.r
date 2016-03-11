@@ -1,9 +1,14 @@
 library(shiny)
 library(dplyr)
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/help_find.r')
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/plot.r')
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/test_results.r')
-source("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/wrangling.r")
+# May need to input whole directory to work.
+#source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/help_find.r')
+#source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/plot.r')
+#source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/test_results.r')
+#source("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/wrangling.R")
+source('scripts/help_find.r')
+source('scripts/plot.r')
+source('scripts/test_results.r')
+source('scripts/wrangling.R')
 names <- colnames(safe_num[2:4])
 level_name <- colnames(total[2:4])
 #--------------------------------------------------------------#

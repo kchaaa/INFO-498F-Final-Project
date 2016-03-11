@@ -6,13 +6,19 @@
 library(dplyr)
 
 # Import helper scripts.
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/help_find.r')
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/plot.r')
-source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/test_results.r')
+# May need to input whole directory to work.
+#source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/help_find.r')
+#source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/plot.r')
+#source('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/scripts/test_results.r')
+source('scripts/help_find.r')
+source('scripts/plot.r')
+source('scripts/test_results.r')
 #--------------------------------------------------------------#
 # This dataset only deals with 271 households and contains flushing test data
 # Reads in the dataset.
-data <- read.csv('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/data/Flint-Samples-FINAL.csv')
+# May need to input whole directory to work.
+#data <- read.csv('C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/data/Flint-Samples-FINAL.csv')
+data <- read.csv('data/Flint-Samples-FINAL.csv')
 data <- data[-c(91),]
 
 # Renames 3 of the columns to be more readable
@@ -23,7 +29,9 @@ colnames(data)[6] <- 'Flushing_2_Min'
 #--------------------------------------------------------------#
 
 # This data set contains the amount of ppb of lead and copper for each samples house
-flint_data <- read.csv("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+# May need to input whole directory to work.
+#flint_data <- read.csv("C:/Users/Kevin Cha/Documents/info498f/Info-498F-Final-Project/data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
+flint_data <- read.csv("data/Test_Results_Flint.csv", stringsAsFactors = FALSE)
 
 # Renames 3 of the columns to be more readable
 colnames(flint_data)[2] <- 'Date_Submitted'
