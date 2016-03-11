@@ -1,6 +1,6 @@
 # Flint Water Crisis Report
 
-<font size = "6">Contributors: Pema Sherpa, Kevin Cha, Nathan Yen</font>
+<font size = "3">Contributors: Pema Sherpa, Kevin Cha, Nathan Yen</font>
 
 ---
 
