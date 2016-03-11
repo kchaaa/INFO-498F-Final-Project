@@ -51,27 +51,49 @@ february_data <- month_select("2")
 february_data$Date_Submitted <- "February"
 
 march_data <- month_select("3")
-february_data$Date_Submitted <- "March"
+march_data$Date_Submitted <- "March"
 
-# Calculates the average for lead and copper for each month
+# Calculates the average for copper for each month
 avg_sep <- september_data %>% 
-  mutate(avg = mean(Copper_ppb)) 
+  mutate(copper_avg = mean(Copper_ppb)) 
 
 avg_oct <- october_data %>% 
-  mutate(avg = mean(Copper_ppb)) 
+  mutate(copper_avg = mean(Copper_ppb)) 
 
 avg_nov <- november_data %>% 
-  mutate(avg = mean(Copper_ppb)) 
+  mutate(copper_avg = mean(Copper_ppb)) 
 
 avg_dec <- december_data %>% 
-  mutate(avg = mean(Copper_ppb)) 
+  mutate(copper_avg = mean(Copper_ppb)) 
 
 avg_jan <- january_data %>% 
-  mutate(avg = mean(Copper_ppb)) 
+  mutate(copper_avg = mean(Copper_ppb)) 
 
 avg_feb <- february_data %>% 
-  mutate(avg = mean(Copper_ppb)) 
+  mutate(copper_avg = mean(Copper_ppb)) 
 
 avg_mar <- march_data %>% 
-  mutate(avg = mean(Copper_ppb)) 
+  mutate(copper_avg = mean(Copper_ppb)) 
 
+# Calculates the average for lead for each month
+
+avg_sep <- avg_sep %>% 
+  mutate(lead_avg = mean(Lead_ppb)) 
+
+avg_oct <- avg_oct %>% 
+  mutate(lead_avg = mean(Lead_ppb)) 
+
+avg_nov <- avg_nov %>% 
+  mutate(lead_avg = mean(Lead_ppb)) 
+
+avg_dec <- avg_dec %>% 
+  mutate(lead_avg = mean(Lead_ppb)) 
+
+avg_jan <- avg_jan %>% 
+  mutate(lead_avg = mean(Lead_ppb)) 
+
+avg_feb <- avg_feb %>% 
+  mutate(lead_avg = mean(Lead_ppb)) 
+
+avg_mar <- avg_mar %>% 
+  mutate(lead_avg = mean(Lead_ppb)) 
